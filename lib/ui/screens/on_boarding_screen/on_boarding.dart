@@ -36,76 +36,78 @@ class _OnBoardingState extends State<OnBoarding> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    navigateReplacement(context, LoginScreen.routeName);
-                  },
-                  child: const Text(
-                    "Skip",
-                    style: TextStyle(color: Colors.deepOrange),
-                  ))
-            ],
-          ),
-          SizedBox(height: size.height * 0.05),
-          Expanded(
-              child: PageView.builder(
-                  onPageChanged: (index) {
-                    if (index == onBoarding.length - 1) {
-                      setState(() {
-                        isLast = true;
-                      });
-                    }
-                    if (index != onBoarding.length - 1) {
-                      setState(() {
-                        isLast = false;
-                      });
-                    }
-                  },
-                  controller: pageController,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: onBoarding.length,
-                  itemBuilder: (context, index) =>
-                      pageView(context, onBoarding[index]))),
-          SizedBox(height: size.height * 0.1),
-          Expanded(
-              child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SmoothPageIndicator(
-                      effect: const ExpandingDotsEffect(
-                        activeDotColor: mainColor,
-                        dotColor: secondaryColor,
-                        dotHeight: 10,
-                      ),
-                      controller: pageController,
-                      count: onBoarding.length)
-                ],
-              ),
-              const Spacer(),
-              customButton(
-                  onPressed: () {
-                    if (isLast) {
+        body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                    onPressed: () {
                       navigateReplacement(context, LoginScreen.routeName);
-                    } else {
-                      pageController.nextPage(
-                          duration: const Duration(milliseconds: 700),
-                          curve: Curves.fastOutSlowIn);
-                    }
-                  },
-                  text: "Continue"),
-            ],
-          ))
-        ],
+                    },
+                    child: const Text(
+                      "Skip",
+                      style: TextStyle(color: Colors.deepOrange),
+                    ))
+              ],
+            ),
+            SizedBox(height: size.height * 0.05),
+            Expanded(
+                child: PageView.builder(
+                    onPageChanged: (index) {
+                      if (index == onBoarding.length - 1) {
+                        setState(() {
+                          isLast = true;
+                        });
+                      }
+                      if (index != onBoarding.length - 1) {
+                        setState(() {
+                          isLast = false;
+                        });
+                      }
+                    },
+                    controller: pageController,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: onBoarding.length,
+                    itemBuilder: (context, index) =>
+                        pageView(context, onBoarding[index]))),
+            SizedBox(height: size.height * 0.1),
+            Expanded(
+                child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SmoothPageIndicator(
+                        effect: const ExpandingDotsEffect(
+                          activeDotColor: mainColor,
+                          dotColor: secondaryColor,
+                          dotHeight: 10,
+                        ),
+                        controller: pageController,
+                        count: onBoarding.length)
+                  ],
+                ),
+                const Spacer(),
+                customButton(
+                    onPressed: () {
+                      if (isLast) {
+                        navigateReplacement(context, LoginScreen.routeName);
+                      } else {
+                        pageController.nextPage(
+                            duration: const Duration(milliseconds: 700),
+                            curve: Curves.fastOutSlowIn);
+                      }
+                    },
+                    text: "Continue"),
+              ],
+            ))
+          ],
+        ),
       ),
     ));
   }
@@ -120,7 +122,8 @@ class _OnBoardingState extends State<OnBoarding> {
           Expanded(
               child: Column(
             children: [
-              Text(model.headText, style: Theme.of(context).textTheme.headline1),
+              Text(model.headText,
+                  style: Theme.of(context).textTheme.headline1),
               Text(model.bodyText, style: Theme.of(context).textTheme.bodyText1)
             ],
           )),

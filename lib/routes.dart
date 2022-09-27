@@ -4,5 +4,5 @@ import 'package:shop_app/ui/screens/on_boarding_screen/on_boarding.dart';
 
 final Map<String, WidgetBuilder> routes = {
   OnBoarding.routeName: (context) => OnBoarding(),
-  LoginScreen.routeName: (context) => const LoginScreen()
+  LoginScreen.routeName: (context) => LoginScreen()
 };

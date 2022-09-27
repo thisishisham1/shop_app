@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shop_app/business_logic/cubit/shop_app_cubit.dart';
 import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:shop_app/data/dio_helper/dio_helper.dart';
 import 'package:shop_app/routes.dart';
@@ -28,7 +29,10 @@ class MyApp extends StatelessWidget {
       routes: routes,
       initialRoute: OnBoarding.routeName,
       debugShowCheckedModeBanner: false,
-      home: OnBoarding(),
+      home: BlocProvider(
+        create: (context) => ShopAppCubit(),
+        child: OnBoarding(),
+      ),
     );
   }
 }

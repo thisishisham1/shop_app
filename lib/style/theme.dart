@@ -19,9 +19,6 @@ ThemeData lightTheme = ThemeData(
     color: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
-    textTheme: TextTheme(
-      headline6: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
-    ),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   ),
   textTheme: const TextTheme(
@@ -30,6 +27,11 @@ ThemeData lightTheme = ThemeData(
         fontSize: 30,
         color: mainColor,
         fontWeight: FontWeight.bold,
-      )),
+      ),
+      headline2: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 14
+      )
+  ),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );
