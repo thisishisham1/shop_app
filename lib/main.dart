@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:shop_app/data/dio_helper/dio_helper.dart';
+import 'package:shop_app/routes.dart';
 import 'package:shop_app/style/theme.dart';
 import 'package:shop_app/ui/screens/login_screen/login_screen.dart';
 import 'package:shop_app/ui/screens/on_boarding_screen/on_boarding.dart';
@@ -13,7 +14,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheData.init();
-  runApp(  DevicePreview(builder: (context)=> const MyApp()));
+  runApp(DevicePreview(builder: (context) => const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,14 +23,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "The Hisham Shop",
       theme: lightTheme,
-      routes: {
-        OnBoarding.routeName: (context) =>  OnBoarding(),
-        LoginScreen.routeName:(context)=> const LoginScreen()
-      },
+      routes: routes,
       initialRoute: OnBoarding.routeName,
       debugShowCheckedModeBanner: false,
-      home:  OnBoarding(),
+      home: OnBoarding(),
     );
   }
 }
