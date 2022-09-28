@@ -6,7 +6,6 @@ import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:shop_app/data/dio_helper/dio_helper.dart';
 import 'package:shop_app/routes.dart';
 import 'package:shop_app/style/theme.dart';
-import 'package:shop_app/ui/screens/login_screen/login_screen.dart';
 import 'package:shop_app/ui/screens/on_boarding_screen/on_boarding.dart';
 import 'data/bloc_observer/bloc_observer.dart';
 
@@ -15,7 +14,12 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   await CacheData.init();
-  runApp(DevicePreview(builder: (context) => const MyApp()));
+  runApp(DevicePreview(
+      builder: (context) =>
+          BlocProvider<ShopAppCubit>(
+            create: (context) => ShopAppCubit(),
+            child: MyApp(),
+          )));
 }
 
 class MyApp extends StatelessWidget {
@@ -29,10 +33,7 @@ class MyApp extends StatelessWidget {
       routes: routes,
       initialRoute: OnBoarding.routeName,
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => ShopAppCubit(),
-        child: OnBoarding(),
-      ),
+      home: OnBoarding(),
     );
   }
 }

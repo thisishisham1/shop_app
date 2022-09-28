@@ -6,3 +6,5 @@ abstract class ShopAppState {}
 class ShopAppInitial extends ShopAppState {}
 
 class ViewPassword extends ShopAppState{}
+
+class RememberMe extends ShopAppState{}
