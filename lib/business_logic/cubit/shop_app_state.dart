@@ -4,7 +4,3 @@ part of 'shop_app_cubit.dart';
 abstract class ShopAppState {}
 
 class ShopAppInitial extends ShopAppState {}
-
-class ViewPassword extends ShopAppState{}
-
-class RememberMe extends ShopAppState{}

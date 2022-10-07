@@ -19,11 +19,12 @@ Widget customTextFiled({
   required Function(String) onFiledSubmitted,
   required String? Function(String?) validator,
   Function()? viewPassword,
-  required IconData suffixIcon,
+  required Icon suffixIcon,
   required String hintText,
   required String labelText,
 }) {
   return TextFormField(
+    autovalidateMode: AutovalidateMode.onUserInteraction,
     style: const TextStyle(
         letterSpacing: 1,
         fontSize: 15,
@@ -36,11 +37,7 @@ Widget customTextFiled({
     maxLines: 1,
     validator: validator,
     decoration: InputDecoration(
-      suffixIcon: isPassword
-          ? IconButton(
-              onPressed: viewPassword,
-              icon: Icon(suffixIcon, color: secondaryColor))
-          : IconButton(onPressed: viewPassword, icon: Icon(suffixIcon)),
+      suffixIcon: IconButton(onPressed: viewPassword, icon: suffixIcon),
       hintText: hintText,
       hintStyle: const TextStyle(
           fontSize: 14, fontWeight: FontWeight.bold, color: textColor),
@@ -49,12 +46,14 @@ Widget customTextFiled({
         fontSize: 15,
         fontWeight: FontWeight.normal,
       ),
-      enabled: true,
       enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: textColor),
           borderRadius: BorderRadius.circular(25)),
       focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.blue),
+          borderSide: const BorderSide(color: textColor),
+          borderRadius: BorderRadius.circular(25)),
+      border: OutlineInputBorder(
+          borderSide: const BorderSide(color: textColor),
           borderRadius: BorderRadius.circular(25)),
     ),
   );

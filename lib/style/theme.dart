@@ -13,6 +13,7 @@ const secondaryColor = Color(0xFF979797);
 const textColor = Color(0xFF757575);
 
 ThemeData lightTheme = ThemeData(
+  primarySwatch: Colors.deepOrange,
   scaffoldBackgroundColor: Colors.white,
   fontFamily: "My Font",
   appBarTheme: const AppBarTheme(

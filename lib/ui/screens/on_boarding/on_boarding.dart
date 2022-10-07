@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/component/constant.dart';
 import 'package:shop_app/component/reusable_component.dart';
-import 'package:shop_app/ui/screens/login_screen/login_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../style/theme.dart';
+import '../login/login.dart';
 
 class OnBoarding extends StatefulWidget {
   static String routeName = "start app";
