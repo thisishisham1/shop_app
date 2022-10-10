@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/style/theme.dart';
 
 Widget customButton({required String text, required Function() onPressed}) {
@@ -57,4 +58,33 @@ Widget customTextFiled({
           borderRadius: BorderRadius.circular(25)),
     ),
   );
+}
+
+void toastMessage({required String message, required ToastState state}) {
+  Fluttertoast.showToast(
+    msg: message,
+    toastLength: Toast.LENGTH_LONG,
+    fontSize: 15.0,
+    textColor: Colors.white,
+    backgroundColor: toastColor(state),
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 5,
+  );
+}
+
+enum ToastState { SUCCESS, ERROR, WARNING }
+
+Color toastColor(ToastState state) {
+  Color color;
+  switch (state) {
+    case ToastState.SUCCESS:
+      color = mainColor;
+      break;
+    case ToastState.ERROR:
+      color = Colors.red;
+      break;
+    default:
+      color = Colors.amber;
+  }
+  return color;
 }

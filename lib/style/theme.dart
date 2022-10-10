@@ -17,7 +17,7 @@ ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   fontFamily: "My Font",
   appBarTheme: const AppBarTheme(
-    color: Colors.white,
+    color: mainColor,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.black),
     systemOverlayStyle: SystemUiOverlayStyle.dark,

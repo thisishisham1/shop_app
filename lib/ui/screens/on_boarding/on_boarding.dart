@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/component/constant.dart';
 import 'package:shop_app/component/reusable_component.dart';
+import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../style/theme.dart';
 import '../login/login.dart';
@@ -32,6 +33,11 @@ class _OnBoardingState extends State<OnBoarding> {
   ];
 
   bool isLast = false;
+  void onSubmitted() {
+    CacheData.saveData(key: "onBoarding", value: true).then((value) {
+      navigateReplacement(context, LoginScreen.routeName);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +54,7 @@ class _OnBoardingState extends State<OnBoarding> {
               children: [
                 TextButton(
                     onPressed: () {
-                      navigateReplacement(context, LoginScreen.routeName);
+                      onSubmitted();
                     },
                     child: const Text(
                       "Skip",
@@ -97,7 +103,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 customButton(
                     onPressed: () {
                       if (isLast) {
-                        navigateReplacement(context, LoginScreen.routeName);
+                        onSubmitted();
                       } else {
                         pageController.nextPage(
                             duration: const Duration(milliseconds: 700),
