@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/ui/screens/layout/layout.dart';
+import 'package:shop_app/ui/layout/layout.dart';
 import 'package:shop_app/ui/screens/login/login.dart';
 import 'package:shop_app/ui/screens/on_boarding/on_boarding.dart';
 import 'package:shop_app/ui/screens/register/register.dart';

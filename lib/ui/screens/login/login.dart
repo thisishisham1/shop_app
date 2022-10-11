@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop_app/component/constant.dart';
 import 'package:shop_app/component/reusable_component.dart';
 import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:shop_app/style/theme.dart';
-import 'package:shop_app/ui/screens/layout/layout.dart';
 import 'package:shop_app/ui/screens/login/cubit/shop_app_login_cubit.dart';
 import 'package:shop_app/ui/screens/register/register.dart';
+
+import '../../layout/layout.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "login screen";

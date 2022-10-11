@@ -23,13 +23,13 @@ class _OnBoardingState extends State<OnBoarding> {
   List<ModelOnBoarding> onBoarding = [
     ModelOnBoarding(
         bodyText: "Best Shopping Experience",
-        image: "assets/image/onBoarding_1.png"),
+        image: "assets/image/on_boarding/onBoarding_1.png"),
     ModelOnBoarding(
         bodyText:
             "Get incredible offers everytime\nyou shop your favourite items",
-        image: "assets/image/onBoarding_2.png"),
+        image: "assets/image/on_boarding/onBoarding_2.png"),
     ModelOnBoarding(bodyText: '''We show the easy way to shop.
-    Just stay at home with us''', image: "assets/image/onBoarding_3.png")
+    Just stay at home with us''', image: "assets/image/on_boarding/onBoarding_3.png")
   ];
 
   bool isLast = false;

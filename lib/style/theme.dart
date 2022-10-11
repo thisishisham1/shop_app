@@ -13,6 +13,13 @@ const secondaryColor = Color(0xFF979797);
 const textColor = Color(0xFF757575);
 
 ThemeData lightTheme = ThemeData(
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    elevation: 0,
+    selectedItemColor: mainColor,
+    type: BottomNavigationBarType.fixed,
+    unselectedItemColor: textColor,
+    showUnselectedLabels: false,
+  ),
   primarySwatch: Colors.deepOrange,
   scaffoldBackgroundColor: Colors.white,
   fontFamily: "My Font",

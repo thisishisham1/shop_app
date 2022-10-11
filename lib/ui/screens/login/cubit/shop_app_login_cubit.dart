@@ -11,13 +11,12 @@ part 'shop_app_login_state.dart';
 class ShopAppLoginCubit extends Cubit<ShopAppLoginState> {
   ShopAppLoginCubit() : super(ShopAppLoginInitial());
 
-  bool rememberEmail = false;
-  bool loginPassword = true;
-
-  late LoginModel loginModel;
-
   static ShopAppLoginCubit get(context) =>
       BlocProvider.of<ShopAppLoginCubit>(context);
+
+  bool rememberEmail = false;
+  bool loginPassword = true;
+  late LoginModel loginModel;
 
   void viewLoginPassword() {
     loginPassword = !loginPassword;
