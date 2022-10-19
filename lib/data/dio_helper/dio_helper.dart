@@ -22,5 +22,13 @@ class DioHelper {
     return response;
   }
 
-
+  static Future<Response<dynamic>> getData({
+    required String url,
+    String? Authorization,
+    String language = 'en',
+  }) async {
+    dio.options.headers = {'lang': language, 'Authorization': Authorization,'Content-Type':'application/json'};
+    Response response = await dio.get(url);
+    return response;
+  }
 }

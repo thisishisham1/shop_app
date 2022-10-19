@@ -8,6 +8,7 @@ import 'package:shop_app/style/theme.dart';
 import 'package:shop_app/ui/layout/layout.dart';
 import 'package:shop_app/ui/screens/login/login.dart';
 import 'package:shop_app/ui/screens/on_boarding/on_boarding.dart';
+import 'component/constant.dart';
 import 'data/bloc_observer/bloc_observer.dart';
 
 void main() async {
@@ -17,7 +18,7 @@ void main() async {
   await CacheData.init();
   Widget widget;
   bool? onBoarding = CacheData.getData(key: "onBoarding");
-  String? token = CacheData.getData(key: "Token");
+  token = CacheData.getData(key: "Token");
   if (onBoarding != null) {
     if (token != null) {
       widget = Layout();

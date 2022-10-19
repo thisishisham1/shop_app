@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class LoginModel {
   late bool status;
@@ -13,14 +12,14 @@ class LoginModel {
 }
 
 class UserData {
-  late int id;
-  late String name;
-  late String email;
-  late String phone;
-  late String image;
-  late int points;
-  late int credit;
-  late String token;
+   int? id;
+   String? name;
+   String? email;
+   String? phone;
+   String? image;
+   int? points;
+   int? credit;
+   String? token;
 
   UserData({
     required this.id,
@@ -44,12 +43,3 @@ class UserData {
     token = json["token"];
   }
 }
-
-/*"id": 20685,
-        "name": "hisham mohmed",
-        "email": "hisham19@gmail.com",
-        "phone": "01112379483",
-        "image": "https://student.valuxapps.com/storage/uploads/users/KtfwrPEdkQ_1665055616.jpeg",
-        "points": 0,
-        "credit": 0,
-        "token": "AyWx9Uw0LRmiJ1yysjynlbYT2YDrLZMb6mOyBzp5BQyOAgXEzIfFmelLeEQgOxWcMhSOOY"*/

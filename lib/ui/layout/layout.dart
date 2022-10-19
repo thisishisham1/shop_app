@@ -1,9 +1,8 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 import 'package:shop_app/business_logic/cubit/shop_app_cubit.dart';
-import 'package:shop_app/style/theme.dart';
+import 'package:shop_app/component/constant.dart';
+import 'package:shop_app/ui/screens/search/search.dart';
 
 class Layout extends StatelessWidget {
   const Layout({Key? key}) : super(key: key);
@@ -12,7 +11,7 @@ class Layout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ShopAppCubit(),
+      create: (context) => ShopAppCubit()..getProductData(),
       child: BlocConsumer<ShopAppCubit, ShopAppState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -23,7 +22,9 @@ class Layout extends StatelessWidget {
               title: Text("Shop hub"),
               actions: [
                 IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigatePush(context, Search());
+                    },
                     icon: Icon(
                       Icons.search,
                       color: Colors.white,
@@ -34,6 +35,7 @@ class Layout extends StatelessWidget {
               items: layoutCubit.navigateItem,
               currentIndex: index,
               onTap: layoutCubit.screenView,
+              showUnselectedLabels: true,
             ),
             body: layoutCubit.screen[index],
           );

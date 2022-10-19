@@ -36,10 +36,6 @@ ThemeData lightTheme = ThemeData(
         color: mainColor,
         fontWeight: FontWeight.bold,
       ),
-      headline2: TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 14
-      )
-  ),
+      headline2: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );

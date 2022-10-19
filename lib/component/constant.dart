@@ -14,3 +14,5 @@ void navigateReplacement(context, String widgetName) =>
     Navigator.pushReplacementNamed(context, widgetName);
 
 void navigatePop(context) => Navigator.pop(context);
+
+String? token = '';

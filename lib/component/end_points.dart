@@ -1,4 +1,5 @@
 import 'constant.dart';
 
-const String login = "${baseUrl}login";
-const String register = "${baseUrl}register";
+const String login = "login";
+const String register = "register";
+const String home = "home";

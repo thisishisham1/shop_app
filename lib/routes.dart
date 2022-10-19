@@ -8,5 +8,5 @@ final Map<String, WidgetBuilder> routes = {
   OnBoarding.routeName: (context) => OnBoarding(),
   LoginScreen.routeName: (context) => LoginScreen(),
   Register.routeName: (context) => Register(),
-  Layout.routeName: (context) => Layout()
+  Layout.routeName: (context) => Layout(),
 };
