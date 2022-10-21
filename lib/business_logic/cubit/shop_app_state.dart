@@ -7,8 +7,14 @@ class ShopAppInitial extends ShopAppState {}
 
 class NavigateScreen extends ShopAppState {}
 
-class ShopAppSuccessHomeData extends ShopAppState {}
-
 class ShopAppLoadingHomeData extends ShopAppState {}
 
+class ShopAppSuccessHomeData extends ShopAppState {}
+
 class ShopAppErrorHomeData extends ShopAppState {}
+
+class ShopAppLoadingCategoriesData extends ShopAppState {}
+
+class ShopAppSuccessCategoriesData extends ShopAppState {}
+
+class ShopAppErrorCategoriesData extends ShopAppState {}

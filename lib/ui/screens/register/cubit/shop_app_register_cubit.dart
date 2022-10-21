@@ -30,7 +30,7 @@ class ShopAppRegisterCubit extends Cubit<ShopAppRegisterState> {
       required String phone,
       required String name}) {
     emit(ShopAppRegisterLoading());
-    DioHelper.postData(language: 'en', url: register, data: {
+    DioHelper.postData(language: 'en', url: REGISTER, data: {
       'email': email,
       'password': password,
       'phone': phone,

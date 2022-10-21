@@ -1,5 +1,7 @@
 import 'constant.dart';
 
-const String login = "login";
-const String register = "register";
-const String home = "home";
+const String LOGIN = "login";
+const String REGISTER = "register";
+const String HOME = "home";
+const String CATEGORIES = "categories";
+const String DETAILS_CATEGORIES="";

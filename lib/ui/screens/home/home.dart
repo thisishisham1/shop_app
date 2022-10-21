@@ -6,23 +6,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_app/business_logic/cubit/shop_app_cubit.dart';
 import 'package:shop_app/data/models/home/home_model.dart';
 import 'package:shop_app/style/theme.dart';
+import '../../../data/models/categories/categories_model.dart';
 
 class Home extends StatelessWidget {
-  var homeCubit;
-  late Size size;
   @override
   Widget build(BuildContext context) {
-    homeCubit = ShopAppCubit.get(context);
-    size = MediaQuery.of(context).size;
     return BlocConsumer<ShopAppCubit, ShopAppState>(
       listener: (context, state) {
         // TODO: implement listener
       },
       builder: (context, state) {
         HomeModel homeModel;
+        CategoriesModel categoriesModel;
         return ConditionalBuilder(
-            condition: homeCubit.homeModel != null,
-            builder: (context) => widgetBuilder(homeCubit.homeModel),
+            condition: ShopAppCubit.get(context).homeModel != null &&
+                ShopAppCubit.get(context).categoriesModel != null,
+            builder: (context) => widgetBuilder(
+                ShopAppCubit.get(context).homeModel!,
+                ShopAppCubit.get(context).categoriesModel!),
             fallback: (context) => Center(
                   child: CircularProgressIndicator(),
                 ));
@@ -30,10 +31,11 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget widgetBuilder(HomeModel homeModel) {
+  Widget widgetBuilder(HomeModel homeModel, CategoriesModel categoriesModel) {
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CarouselSlider(
               items: homeModel.data.banners
@@ -53,19 +55,49 @@ class Home extends StatelessWidget {
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   scrollDirection: Axis.horizontal)),
-          SizedBox(height: 10),
-          Container(
-            color: Colors.white60,
-            child: GridView.count(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              mainAxisSpacing: 1.0,
-              crossAxisSpacing: 2.0,
-              childAspectRatio: 0.5,
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              children: List.generate(homeModel.data.products.length,
-                  (index) => widgetProducts(homeModel.data.products[index])),
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Categories",
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25),
+                ),
+                SizedBox(height: 5),
+                SizedBox(
+                  height: 100,
+                  child: ListView.separated(
+                      physics: BouncingScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => itemCategories(
+                          categoriesModel.data.categoriesData[index]),
+                      separatorBuilder: (context, index) => SizedBox(width: 7),
+                      itemCount: categoriesModel.data.categoriesData.length),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "New Products",
+                  style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25),
+                ),
+                Container(
+                  color: Colors.white60,
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 1.0,
+                    crossAxisSpacing: 2.0,
+                    childAspectRatio: 0.5,
+                    padding: EdgeInsets.symmetric(horizontal: 5),
+                    children: List.generate(
+                        homeModel.data.products.length,
+                        (index) =>
+                            widgetProducts(homeModel.data.products[index])),
+                  ),
+                )
+              ],
             ),
           )
         ],
@@ -125,14 +157,16 @@ class Home extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       if (productsModel.discount != 0)
                         Text(
                           '${productsModel.oldPrice} LE',
                           overflow: TextOverflow.ellipsis,
                           maxLines: 1,
                           style: TextStyle(
-                              color: textColor, 
+                              color: textColor,
                               height: 1.4,
                               fontSize: 11,
                               decoration: TextDecoration.lineThrough),
@@ -141,13 +175,43 @@ class Home extends StatelessWidget {
                       Expanded(
                         child: IconButton(
                             padding: EdgeInsets.all(0),
-                            onPressed: (){}, icon: Icon(Icons.favorite_border)),
+                            onPressed: () {},
+                            icon: Icon(Icons.favorite_border)),
                       )
                     ],
                   )
                 ],
               ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget itemCategories(DataModel categoriesModel) {
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        height: 100,
+        width: 100,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            CachedNetworkImage(
+                fit: BoxFit.cover, imageUrl: categoriesModel.image),
+            Container(
+                width: 100,
+                color: Colors.black.withOpacity(0.8),
+                child: Text(categoriesModel.name,
+                    style: TextStyle(
+                        color: Colors.white,
+                        overflow: TextOverflow.ellipsis,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
+                    maxLines: 1,
+                    textAlign: TextAlign.center))
           ],
         ),
       ),

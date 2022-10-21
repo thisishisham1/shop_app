@@ -1,18 +1,18 @@
 class HomeModel {
   late bool status;
-  late DataModel data;
+  late Data data;
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     status = json["status"];
-    data = DataModel.fromJson(json["data"]);
+    data = Data.fromJson(json["data"]);
   }
 }
 
-class DataModel {
+class Data {
   List<BannersModel> banners = [];
   List<ProductsModel> products = [];
 
-  DataModel.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     banners = List.from(json["banners"])
         .map((e) => BannersModel.fromJson(e))
         .toList();

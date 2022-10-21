@@ -15,7 +15,7 @@ class DioHelper {
       {Map<String, dynamic>? query,
       required String url,
       required Map<String, dynamic> data,
-      String language = 'ar',
+      String language = 'en',
       String? Authorization}) async {
     dio.options.headers = {'lang': language, 'Authorization': Authorization};
     Response response = await dio.post(url, queryParameters: query, data: data);
