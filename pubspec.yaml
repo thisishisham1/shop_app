@@ -22,7 +22,6 @@ dependencies:
   device_preview: ^1.1.0
   dio: ^4.0.6
   cached_network_image: ^3.2.1
-  rating_bar: ^0.2.0
   badges: ^2.0.3
   flutter_launcher_icons: ^0.10.0
   onboarding: ^3.1.0
@@ -31,6 +30,7 @@ dependencies:
   conditional_builder_null_safety:
   fluttertoast: 
   curved_navigation_bar: ^1.0.3
+  carousel_slider:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -51,6 +51,8 @@ flutter:
   assets:
      - assets/image/navigation_bar/
      - assets/image/on_boarding/
+     - assets/image/home/discount1.png
+
   fonts:
     - family: My Font
       fonts:

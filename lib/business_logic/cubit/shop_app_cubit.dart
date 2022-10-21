@@ -19,7 +19,7 @@ class ShopAppCubit extends Cubit<ShopAppState> {
 
   static ShopAppCubit get(context) => BlocProvider.of<ShopAppCubit>(context);
   int currentIndex = 0;
-  late HomeModel homeModel;
+  HomeModel? homeModel;
 
   List<BottomNavigationBarItem> navigateItem = [
     BottomNavigationBarItem(
@@ -72,12 +72,10 @@ class ShopAppCubit extends Cubit<ShopAppState> {
     DioHelper.getData(url: home, Authorization: token ?? '', language: "en")
         .then((value) {
       homeModel = HomeModel.fromJson(value.data);
+      print(homeModel!.data.products[0].name);
       emit(ShopAppSuccessHomeData());
-      print(value.data);
-      print("done");
     }).catchError((error) {
       emit(ShopAppErrorHomeData());
-      print("error hicham");
       print(error.toString());
     });
   }

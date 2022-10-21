@@ -26,7 +26,7 @@ ThemeData lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     color: mainColor,
     elevation: 0,
-    iconTheme: IconThemeData(color: Colors.black),
+    iconTheme: IconThemeData(color: Colors.white),
     systemOverlayStyle: SystemUiOverlayStyle.dark,
   ),
   textTheme: const TextTheme(
