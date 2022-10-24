@@ -16,8 +16,6 @@ class Home extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        HomeModel homeModel;
-        CategoriesModel categoriesModel;
         return ConditionalBuilder(
             condition: ShopAppCubit.get(context).homeModel != null &&
                 ShopAppCubit.get(context).categoriesModel != null,
@@ -30,7 +28,6 @@ class Home extends StatelessWidget {
       },
     );
   }
-
   Widget widgetBuilder(HomeModel homeModel, CategoriesModel categoriesModel) {
     return SingleChildScrollView(
       physics: BouncingScrollPhysics(),
@@ -157,9 +154,7 @@ class Home extends StatelessWidget {
                           fontSize: 12,
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
+                      SizedBox(width: 10,),
                       if (productsModel.discount != 0)
                         Text(
                           '${productsModel.oldPrice} LE',
@@ -172,12 +167,14 @@ class Home extends StatelessWidget {
                               decoration: TextDecoration.lineThrough),
                         ),
                       Spacer(),
-                      Expanded(
-                        child: IconButton(
-                            padding: EdgeInsets.all(0),
-                            onPressed: () {},
-                            icon: Icon(Icons.favorite_border)),
-                      )
+                      IconButton(
+                          onPressed: () {
+                            print(productsModel.id);
+                          },
+                          icon: CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              foregroundColor: Colors.white,
+                              child: Icon(Icons.favorite_border,color: Colors.white,)))
                     ],
                   )
                 ],

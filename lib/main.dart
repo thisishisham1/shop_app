@@ -1,6 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shop_app/business_logic/cubit/shop_app_cubit.dart';
 import 'package:shop_app/data/cache_helper/chache_data.dart';
 import 'package:shop_app/data/dio_helper/dio_helper.dart';
@@ -43,7 +44,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ShopAppCubit()..getProductData()..getCategories()),
+        BlocProvider(
+            create: (context) => ShopAppCubit()
+              ..getProductData()
+              ..getCategories()),
         BlocProvider(create: (context) => ShopAppLoginCubit()),
         BlocProvider(create: (context) => ShopAppRegisterCubit()),
       ],
